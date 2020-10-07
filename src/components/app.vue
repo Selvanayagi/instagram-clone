@@ -23,7 +23,7 @@
           <img :src="require('./images/discover.png')" class="icon-side" />
           <img :src="require('./images/activity.png')" class="icon-side" />
           <router-link to="/profile">
-            <img :src="`${pro}`" style="width: 7%;border-radius: 16px;" class="icon-side" />
+            <img :src="`${pro}`" class="user-profile-img" />
           </router-link>
           <router-link to="/movieapp">
             <img :src="require('./images/movie.png')" style="width: 7%;border-radius: 16px;" class="icon-side" />
@@ -654,4 +654,22 @@
 .remove-btn{
   text-align: center;
 }
+.user-profile-img{
+      width: 25px;
+    height: 25px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-right: 3%;
+  }
+   @media only screen and (max-width: 600px){
+    .size {
+      height: 100px;
+      width: 100px;
+    }
+    .remove-btn-btn{
+      width: 56%;
+      font-size: 9px;
+    }
+   }
+   
 </style>

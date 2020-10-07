@@ -14,13 +14,13 @@
                         </div>
                     </center>
                 </div>
-                <div class="col-sm-4" style="margin-left: -3%;margin-top: 0.5%;" v-bind:key="pro">
+                <div class="col-sm-4 icon-arrange"  v-bind:key="pro">
                      <img :src="require('./images/home-icon.png')" class="icon-side" />
                      <img :src="require('./images/save.png')" class="icon-side" />
                      <img :src="require('./images/discover.png')" class="icon-side" />
                      <img :src="require('./images/activity.png')" class="icon-side" />
                      <router-link to="/profile">
-                        <img :src="`${pro}`" style="width: 7%;border-radius: 16px;" class="icon-side"/>
+                        <img :src="`${pro}`" class="user-profile-img"/>
                      </router-link>
                     &nbsp;&nbsp;
                     <router-link to="/movieapp">
@@ -31,11 +31,11 @@
         </div>
         <br/>
         <center>
-            <div v-bind:key="cat" v-for="(cat) in cats">
+            <div v-bind:key="cdx" v-for="(cat,cdx) in cats">
                 
                 <div class="post-p">
                     <div class="username-post">
-                        <img :src="`${cat.profile}`" style="width: 5%;border-radius: 16px;margin-left: 2%;"/>
+                        <img :src="`${cat.profile}`" style="margin-left: 2%;margin-right: 0%;" class="user-profile-img"/>
                         {{cat.name}}
                         <img :src="require('./images/threedots.svg')" alt="" id="show-modal" @click="showDots = true" class="three-dots">
                     </div>
@@ -44,7 +44,7 @@
                         <div v-if="cat.path.length==1" class="imgpo">
                             <!-- <div v-bind:key="inx" v-for="(t,inx) in catl.path"> -->
                                 <clazy-load :src="`${cat.path[0]}`">
-                                    <img :src="`${cat.path[0]}`" class="post-img">
+                                    <img :src="`${cat.path[0]}`" class="post-img list-load">
                                     <div class="preloader" slot="placeholder">
                                     <center>
                                         <img src="data:image/png;base64,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" alt="" style="width: 41%;">
@@ -341,14 +341,14 @@
     }
     .post-img{
         width: 600px;
-        height: 600px;
+        /* height: 600px; */
         object-fit: cover;
         margin-left: -1px;
         border-bottom: 1px solid rgba(var(--ca6, 219, 219, 219), 1);
     }
     .post-p{
         background-color: white;
-        width: 44.5%;
+        width: 600px;
         border: 1px solid rgba(var(--ca6, 219, 219, 219), 1);   
     }
     .footer{
@@ -486,4 +486,51 @@
   opacity: 0;
   transform: translate(-60%, -50%);
 }
+.user-profile-img{
+      width: 25px;
+    height: 25px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-right: 3%;
+  }
+   .icon-arrange{
+      margin-left: -3%;
+      margin-top: 0.5%;
+  }
+  /* responsive */
+  @media only screen and (max-width: 600px){
+         .icon-arrange{
+            margin-left: unset;
+        }
+        .profile-icon{
+            text-align: unset;
+        }
+        .new-post{
+            width: 34%;
+        }
+        .size {
+            height: 100px;
+            width: 100px;
+        }
+        .three-dots[data-v-3d0b1749] {
+            margin-left: 44%;
+        }
+        .dots{
+            text-align: left;
+            margin-left: 27%;
+        }
+        .list-load {
+            margin-left: -37%;
+        }
+        .post-img{
+            width: 375px;
+            /* height: 375px; */
+        }
+        .slides{
+            justify-content: unset;
+        }
+        .footer{
+            display: none;
+        }
+    }
 </style>

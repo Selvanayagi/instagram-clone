@@ -22,7 +22,7 @@
                     <img :src="require('./images/discover.png')" class="icon-side" />
                     <img :src="require('./images/activity.png')" class="icon-side" />
                     <router-link to="/profile">
-                        <img :src="`${pro}`" style="width: 7%;border-radius: 16px;" class="icon-side"/>
+                        <img :src="`${pro}`" class="user-profile-img"/>
                     </router-link>
                     &nbsp;&nbsp;
                     <router-link to="/movieapp">
@@ -32,7 +32,7 @@
             </div>
         </div>
         <center>
-            <div class="change" v-bind:key="profile_path">
+            <div class="change" v-bind:key="1">
                 <img :src="`${profile_path}`" class="icon-side-profile" />
                 <br>
                 <input type="text" v-model="url" placeholder="url.." class="changeurl">
@@ -78,7 +78,8 @@
             return {
                 showModal: false,
                 profile_path: [],
-                pro:""
+                pro:"",
+                url:""
             }
         },
         mounted() {
@@ -148,7 +149,8 @@
                             bio: user.bio,
                             gender: user.gender,
                             profile: "https://www.iconfinder.com/data/icons/images-image-files-7/24/round_image_circle_picture_photo_photography-512.png",
-                            posts: user.posts
+                            posts: user.posts,
+                            fav:user.fav
                         }
                         newusers.push(cuser);
                     } else {
@@ -192,10 +194,12 @@
     }
 
     .icon-side-profile {
-        width: 10%;
         margin-top: 4%;
         margin-bottom: 4%;
-        border-radius: 38px;
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+        border-radius: 50%;
     }
 
     .footer {
@@ -272,5 +276,12 @@
       border: 1px solid rgba(var(--ca6, 219, 219, 219), 1);
       outline: none;
       box-shadow: none;
+  }
+  .user-profile-img{
+      width: 25px;
+    height: 25px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-right: 3%;
   }
 </style>

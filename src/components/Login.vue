@@ -114,13 +114,12 @@ export default {
   props: {
     msg: String
   },
-  // data(){
-  //   return{
-  //     cats:[],
-  //     row:[],
-  //     moboremail:null
-  //   }
-  // },
+  data(){
+    return{
+      moboremail:null,
+      pass:null
+    }
+  },
   // mounted() {
   //   if(localStorage.getItem('cats')) {
   //     try {
@@ -412,4 +411,11 @@ a:focus, a:hover {
 input:focus, textarea:focus, select:focus{
     outline: none;
 }
+
+/* responsive */
+ @media only screen and (max-width: 600px){
+   .footer{
+     display: none;
+   }
+ }
 </style>
