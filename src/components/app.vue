@@ -661,7 +661,7 @@
     border-radius: 50%;
     margin-right: 3%;
   }
-   @media only screen and (max-width: 600px){
+   @media only screen and (max-width: 980px){
     .size {
       height: 100px;
       width: 100px;

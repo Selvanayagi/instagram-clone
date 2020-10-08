@@ -984,7 +984,7 @@
   }
 
     /* responsive pages */
-    @media only screen and (max-width: 600px){
+    @media only screen and (max-width: 980px){
         .url-input{
             width: 129%;
         }

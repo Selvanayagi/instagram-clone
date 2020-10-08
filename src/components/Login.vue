@@ -61,7 +61,7 @@
                 </p>
             </div>
             <p class="get-app">Get the app</p>
-            <div class="row">
+            <div class="row app-getting">
                 <div class="col-sm-1"></div>
                 <div class="col-sm-4">
                     <img :src="require('./images/app-store.png')" alt="" class="Rt8TI "/>
@@ -413,9 +413,56 @@ input:focus, textarea:focus, select:focus{
 }
 
 /* responsive */
- @media only screen and (max-width: 600px){
+ @media only screen and (max-width: 768px){
    .footer{
      display: none;
    }
+   .mobile{
+     display:none;
+   }
+   .login{
+     margin-left: 8%;
+   }
+   .get-app{
+     margin-left: unset;
+   }
  }
+ @media only screen and (min-width:426px) and (max-width:768px){
+    .s311c{
+     display:none;
+   }
+   ._0tv-g{
+     margin-left: 3.5em;
+   }
+   .app-getting{
+     width: 165%;
+   }
+   .footer{
+     display: none;
+   }
+   .mobile{
+     display:none;
+   }
+   .login{
+     margin-left: 50%;
+    width: 124%;
+   }
+   .get-app{
+     margin-left: 62%;
+    width: 100%;
+   }
+   .Rt8TI{
+     margin-left: 100%;
+   }
+ }
+ @media only screen and (min-width:769px) and (max-width:1024px){
+     .col-sm-4
+     {
+       max-width: 50.33%;
+     }   
+     .mobile{
+       margin-left: unset;
+       margin-right: unset;
+     }
+    }
 </style>

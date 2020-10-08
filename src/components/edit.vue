@@ -1000,7 +1000,7 @@
   }
 
   /* responsive */
- @media only screen and (max-width: 600px){
+ @media only screen and (max-width: 980px){
    .row-edit{
        width: 89%;
        margin-left: -3%;

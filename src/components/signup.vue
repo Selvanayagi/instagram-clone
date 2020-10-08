@@ -416,4 +416,9 @@ margin-bottom: 2em;
 input:focus, textarea:focus, select:focus{
         outline: none;
     }
+     @media only screen and (max-width: 980px){
+       .footer{
+         display:none;
+       }
+     }
 </style>
