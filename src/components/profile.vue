@@ -1061,6 +1061,10 @@
 }
     /* responsive pages */
     @media only screen and (max-width: 980px){
+        .remove-btn-btn{
+      width: 56%;
+      font-size: 9px;
+    }
         .url-input{
             width: 129%;
         }
