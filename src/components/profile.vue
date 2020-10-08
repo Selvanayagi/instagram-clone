@@ -131,6 +131,8 @@
                                        <center>
                                     <tr v-bind:key="index" v-for="(url, index) in urls">
                                         <td><input type="text" v-model="url.title" placeholder="image url..." class="upload-input url-input"></td>
+                                        <!-- <button class="removeimage" @click="removerow(index)">remove images</button> -->
+                                        <img :src="require('./images/remove-btn.png')" class="removeimage" @click="removerow(index)"/>
                                         <br><br>
                                     </tr>
                                     </center>
@@ -152,7 +154,7 @@
         </transition>
     </div>
 
-        <button id="show-modal" @click="showModal = true" class="new-post">Upload</button>
+        <button id="show-modal" @click="showModal = true;" class="new-post">Upload</button>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
         <!-- <router-link to="/edit-post">
@@ -185,6 +187,11 @@
                                     </center>
                                     </div>
                                 </clazy-load>
+                                 <div class="remove-btn">
+                                    <button class="remove-btn-btn" @click="removeimgrow(`${rowt.id}`)">
+                                        Remove
+                                    </button>
+                                </div>
                             </td>
                             <td class="size">
                                 <!-- <img :src="`${rowt.name}`" class="size" /> -->
@@ -196,6 +203,11 @@
                                     </center>
                                     </div>
                                 </clazy-load>
+                                <div class="remove-btn" v-show="vshow">
+                                    <button class="remove-btn-btn" @click="removeimgrow(`${rowt.name}`)">
+                                        Remove
+                                    </button>
+                                </div>
                             </td>
                             <td class="size">
                                 <!-- <img :src="`${rowt.phone}`" class="size" /> -->
@@ -207,6 +219,11 @@
                                     </center>
                                     </div>
                                 </clazy-load>
+                                <div class="remove-btn" v-show="vshow1">
+                                    <button class="remove-btn-btn" @click="removeimgrow(`${rowt.phone}`)">
+                                        Remove
+                                    </button>
+                                </div>
                             </td>
                         </tr>
                     </table>
@@ -343,7 +360,9 @@
                 fname:"",
                 com:true,
                 urls:[],
-                i:1
+                i:1,
+                vshow:false,
+                vshow1:false,
             }
         },
         created() {
@@ -419,6 +438,7 @@
                                 id: s
                             }
                         } else if (i == 2) {
+                            this.vshow=true
                             m = pa
                             k = []
                             k = {
@@ -427,6 +447,7 @@
                             }
 
                         } else if (i == 3) {
+                            this.vshow1=true
                             k = []
                             k = {
                                 id: s,
@@ -450,6 +471,8 @@
                     if (i > 1) {
                         // i--;
                         if (i == 2) {
+                            this.vshow=false
+                            this.vshow1=false
                             // m="https://i.pinimg.com/originals/aa/bf/c8/aabfc8cd95f0350be64a0f300ecb111e.jpg"
                             k = []
                             k = {
@@ -459,6 +482,7 @@
                             }
 
                         } else if (i == 3) {
+                            this.vshow1=false
                             k = []
                             k = {
                                 id: s,
@@ -490,7 +514,11 @@
                     id:this.i.toString(),
                     title: "",
                 });
+                // this.i=parseInt(this.i);
                 this.i=this.i+1;
+            },
+            removerow(index){
+                this.urls.splice(index, 1)
             },
             getNow: function() {
                 const today = new Date();
@@ -564,7 +592,13 @@
                 this.showDots = false
             },
             addimage() {
-                if((!this.urls))
+                this.k=0
+                this.urls.forEach(u=>{
+                    if(u.title==""){
+                        this.k=1;
+                    }
+                })
+                if(this.k==1)
                     alert("provide image path");
                 else{
                     this.len=this.len+1;
@@ -579,6 +613,30 @@
                     this.posts.push(post)
                     this.saveimage();   
                 }
+            },
+            removeimgrow(image){
+                let img=""
+                let email = sessionStorage.getItem('email');
+                let users = JSON.parse(localStorage.getItem("instausers"));
+                this.posts=[]
+                users.forEach(user => {
+                    if ((user.moboremail == email) || (user.uname == email) || (user.email == email)) {
+                    user.posts.forEach(f => {
+                        f.path.forEach(p=>{
+                            if(image==p.title){
+                                img=f.id
+                        }
+                        })
+                    })
+                    user.posts.forEach(f => {
+                        if(img!=f.id){
+                            this.posts.push(f)
+                        }
+                    })
+                    alert("successfully deleted posts")
+                    this.saveimage()
+                    }
+                })
             },
             removeimage(img){
                 console.log(img)
@@ -871,7 +929,8 @@
     border-bottom: none !important;
 }
 .three-dots {
-    margin-left: 83%;
+    margin-left: 77%;
+    cursor: pointer;
 }
 .comment-edit {
     border: none;
@@ -982,7 +1041,24 @@
   .url-input{
       width: 192%;margin-left: 19%;
   }
-
+  .removeimage {
+      width: 19%;
+      margin-left: 88%;
+      cursor: pointer;
+  }
+  .remove-btn-btn {
+    border: 1px solid transparent;
+    background-color: rgba(var(--d69,0,149,246),1);
+    color: #fff;
+    border-radius: 6px;
+    width: 31%;
+    margin-bottom: 2%;
+    font-size: 20px;
+    margin-top: 2%;
+ }
+.remove-btn{
+  text-align: center;
+}
     /* responsive pages */
     @media only screen and (max-width: 980px){
         .url-input{
@@ -1001,7 +1077,7 @@
             height: 100px;
             width: 100px;
         }
-        .three-dots[data-v-3d0b1749] {
+        .three-dots {
             margin-left: 44%;
         }
         .dots{
@@ -1021,6 +1097,7 @@
         .footer{
             display: none;
         }
+        
     }
    
 </style>

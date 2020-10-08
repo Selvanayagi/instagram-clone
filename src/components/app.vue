@@ -41,27 +41,6 @@
       <center>
         <table id="post" cellspacing="5">
           <tr v-bind:key="row" v-for="row in rows">
-            <!-- <div v-bind:key="titles" v-for="titles in title"> -->
-            <!-- <td class="size">
-              <img :src="`${row.id}`" class="size" /> -->
-              <!-- <p class="mov-tit">
-                      {{titles.id}}
-                    </p> -->
-            <!-- </td>
-            <td class="size">
-              <img :src="`${row.name}`" class="size" /> -->
-              <!-- <p class="mov-tit">
-                      {{titles.name}}
-                    </p>                     -->
-
-            <!-- </td>
-            <td class="size">
-              <img :src="`${row.phone}`" class="size" /> -->
-              <!-- <p class="mov-tit">
-                      {{titles.phone}}
-                    </p>                     -->
-            <!-- </td> -->
-            <!-- </div> -->
             <td class="size">
               <clazy-load :src="`${row.id}`">
                 <img :src="`${row.id}`" class="size">
@@ -240,7 +219,7 @@
             if (i == 2) {
               // m="https://i.pinimg.com/originals/aa/bf/c8/aabfc8cd95f0350be64a0f300ecb111e.jpg"
               this.vshow=false
-              this.vshow2=false
+              this.vshow1=false
               k = []
               kt = []
               k = {
@@ -255,7 +234,7 @@
               }
 
             } else if (i == 3) {
-              this.vshow2=false
+              this.vshow1=false
               k = []
               kt = []
               k = {

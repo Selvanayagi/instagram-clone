@@ -409,7 +409,7 @@
       box-shadow: none;
   }
   .three-dots {
-    margin-left: 83%;
+    margin-left: 77%;
 }
 .showmore {
     color: inherit;
@@ -499,6 +499,9 @@
   }
   /* responsive */
   @media only screen and (max-width: 600px){
+       .three-dots {
+            margin-left: 44%;
+        }
          .icon-arrange{
             margin-left: unset;
         }
